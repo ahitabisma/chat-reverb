@@ -16,9 +16,6 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
-          script: |
-            cd ${{ secrets.PROJECT_PATH }}
-            git pull origin main
-            composer install
-            php artisan migrate
-            php artisan optimize
+          run: |
+            echo "Host: ${{ secrets.VPS_HOST }}"
+            echo "User: ${{ secrets.VPS_USER }}"
